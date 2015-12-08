@@ -16,7 +16,7 @@ using namespace std;
 void SwapPlayers(char *player);
 void DisplayBoard(char * board);
 void ClearBoard(char * board);
-bool Winner(char * board);
+bool Winner(char * board, char player);
 
 // This is our entry point, where we begin. "void" indicates that this function doesn't return
 // a value.
@@ -68,9 +68,11 @@ void main()
 			board[boardSpace - 1] = player; // now we assign the player's letter to the space.
 
 			// Check for a winner.
-			if (Winner())
-				;
-
+			if (Winner(board, player))
+			{
+				cout << "Winner!";
+				ClearBoard(board);
+			}
 
 			SwapPlayers(&player); // the ampersand (&) means we're passing in the address of the variable, so we can modify it directly.
 
@@ -133,4 +135,9 @@ void ClearBoard(char * board)
 	{
 		board[i] = ' ';
 	}
+}
+
+bool Winner(char * board, char player)
+{
+	return false;
 }
